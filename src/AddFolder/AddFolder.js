@@ -78,7 +78,6 @@ export default class AddFolder extends Component {
         aria-required="true"
         aria-label="Name"
         defaultValue=""
-        required
         onChange={(e) => this.updateFolderName(e)}/>
         <button type="submit">Submit</button>
         </div>

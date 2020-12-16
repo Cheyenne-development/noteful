@@ -66,7 +66,7 @@ export default class AddNote extends React.Component {
 
   validateName = () => {
     console.log(this.context.newNote)
-    if (this.context.newNote.name.value === undefined || this.context.newNote.name.value.length === 0)  {
+    if (this.context.newNote.name.value === undefined || this.context.newNote.name.value.length === 0) {
       return 'Name is required'
     }
   }
@@ -92,7 +92,6 @@ export default class AddNote extends React.Component {
             <input type='text' id='note-name' name='name'
               aria-required="true"
               aria-label="Name"
-              
               defaultValue=""
               onChange={e =>
                 this.context.updateNewNoteData(e.target.name, e.target.value)
@@ -110,7 +109,6 @@ export default class AddNote extends React.Component {
               aria-required="true"
               aria-label="Description"
               defaultValue=""
-              
               onChange={e =>
                 this.context.updateNewNoteData(e.target.name, e.target.value)
               }
