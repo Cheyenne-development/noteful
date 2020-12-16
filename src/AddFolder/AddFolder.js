@@ -14,6 +14,9 @@ export default class AddFolder extends Component {
 
       handleSubmit = e => {
         e.preventDefault()
+        if (this.context.newFolder.hasError === true){
+        return this.context.updateNewFolderName()
+        } else {
         const folder = {
           name: e.target['folder-name'].value
         }
@@ -37,6 +40,7 @@ export default class AddFolder extends Component {
             console.error({ error })
           })
       }
+    }
     
 
   updateFolderName(e) {
@@ -45,9 +49,12 @@ export default class AddFolder extends Component {
   }
 
   validateFolderName() {
-    if (this.context.newFolder.name.trim() === 0) {
+    
+    if (this.context.newFolder.name.trim().length === 0) {
+      console.log(this.context.newFolder.name.trim().length)
       return 'Must be more than 0 characters.'
     } else if ( this.context.newFolder.name.trim().length <= 3 ) {
+      console.log(this.context.newFolder.name.trim().length)
       return 'Must be more than 3 characters.'
     }
   }
@@ -70,8 +77,9 @@ export default class AddFolder extends Component {
         name="folder-name"
         aria-required="true"
         aria-label="Name"
+        defaultValue=""
+        required
         onChange={(e) => this.updateFolderName(e)}/>
-        
         <button type="submit">Submit</button>
         </div>
         </NotefulForm>

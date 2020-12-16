@@ -71,7 +71,7 @@ export default class Note extends React.Component {
 
 Note.propTypes = {
   onDeleteNote: PropTypes.func,
-  id: PropTypes.string,
-  name: PropTypes.string,
-  modified: PropTypes.string
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  modified: PropTypes.string.isRequired
 }
