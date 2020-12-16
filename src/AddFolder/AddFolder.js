@@ -51,10 +51,8 @@ export default class AddFolder extends Component {
   validateFolderName() {
     
     if (this.context.newFolder.name.trim().length === 0) {
-      console.log(this.context.newFolder.name.trim().length)
       return 'Must be more than 0 characters.'
-    } else if ( this.context.newFolder.name.trim().length <= 3 ) {
-      console.log(this.context.newFolder.name.trim().length)
+    } else if ( this.context.newFolder.name.trim().length <= 3 ) {    
       return 'Must be more than 3 characters.'
     }
   }
@@ -77,6 +75,7 @@ export default class AddFolder extends Component {
         name="folder-name"
         aria-required="true"
         aria-label="Name"
+        required
         defaultValue=""
         onChange={(e) => this.updateFolderName(e)}/>
         <button type="submit">Submit</button>

@@ -66,7 +66,7 @@ class App extends Component {
         newFolder: {
           hasError: true,
           touched: true,
-          name: '',
+          name: "",
         },
       })
     } else if (name.length < 4) {
@@ -89,7 +89,6 @@ class App extends Component {
   }
 
   updateBadSubmitData = () => {
-    console.log(this.state.newNote)
     const nameValue = this.state.newNote.name.value
     const contentValue = this.state.newNote.content.value
     this.setState({
@@ -107,13 +106,10 @@ class App extends Component {
 
 
     })
-    console.log(this.state.newNote)
+
   }
 
   updateNewNoteData = (input, value) => {
-    console.log(this.state.newNote.name.value)
-    console.log(this.state.newNote.content.value)
-    console.log(value.length)
     this.setState({
       newNote: {
         ...this.state.newNote,
@@ -123,11 +119,9 @@ class App extends Component {
         },
       },
     })
-    console.log(this.state.newNote)
   }
 
   handleAddFolder = newFolder => {
-    console.log(newFolder)
     this.setState({
       folders: [...this.state.folders, newFolder],
       newFolder: {
@@ -139,24 +133,17 @@ class App extends Component {
   }
 
   handleAddNote = note => {
-
     this.setState({
       notes: [...this.state.notes, note],
       newNote: {
         name: {
           touched: false,
-          
         },
         content: {
           touched: false,
-          
         }
       }
-
-
     })
-
-    console.log(this.state.newNote)
   }
 
   handleDeleteNote = noteId => {

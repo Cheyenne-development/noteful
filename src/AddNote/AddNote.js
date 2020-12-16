@@ -13,7 +13,6 @@ export default class AddNote extends React.Component {
   static contextType = ApiContext
 
   addNewNote = note => {
-    console.log(this.context.newNote.content.value.length)
     note.modified = new Date(note.modified);
 
     fetch(`${config.API_ENDPOINT}/notes`, {
@@ -24,7 +23,6 @@ export default class AddNote extends React.Component {
       body: JSON.stringify(note),
     })
       .then(res => {
-        console.log(JSON.stringify(note))
         return res.json()
       })
       .then(resJSON => this.context.handleAddNote(resJSON))
@@ -38,7 +36,6 @@ export default class AddNote extends React.Component {
   }
 
   handleSubmit = e => {
-    console.log(this.context.newNote.name.value)
     e.preventDefault(e);
     const newNote = {
       name: e.target.name.value,
@@ -46,11 +43,6 @@ export default class AddNote extends React.Component {
       folderId: e.target.folder.value,
       modified: new Date(),
     }
-    console.log(e.value)
-    console.log(e.target.name.value.length)
-    console.log(e.target.content.value.length)
-    console.log(e.target.name.value.length !== 0)
-    console.log(e.target.content.value.length !== 0)
     if (e.target.name.value.length !== 0 && e.target.content.value.length !== 0) {
 
       this.addNewNote(newNote)
@@ -60,12 +52,12 @@ export default class AddNote extends React.Component {
       return this.context.updateBadSubmitData()
     }
 
-    console.log(newNote);
+   
 
   }
 
   validateName = () => {
-    console.log(this.context.newNote)
+    
     if (this.context.newNote.name.value === undefined || this.context.newNote.name.value.length === 0) {
       return 'Name is required'
     }
@@ -78,8 +70,6 @@ export default class AddNote extends React.Component {
   }
   render() {
 
-    //console.log(this.context.notes)
-    console.log(this.context.newNote)
     return (
       <section className='AddNote'>
         <h2>Create a note</h2>
@@ -92,6 +82,7 @@ export default class AddNote extends React.Component {
             <input type='text' id='note-name' name='name'
               aria-required="true"
               aria-label="Name"
+              required
               defaultValue=""
               onChange={e =>
                 this.context.updateNewNoteData(e.target.name, e.target.value)
@@ -109,6 +100,7 @@ export default class AddNote extends React.Component {
               aria-required="true"
               aria-label="Description"
               defaultValue=""
+              required
               onChange={e =>
                 this.context.updateNewNoteData(e.target.name, e.target.value)
               }
