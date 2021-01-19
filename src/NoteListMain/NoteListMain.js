@@ -22,6 +22,18 @@ export default class NoteListMain extends React.Component {
     const notesForFolder = getNotesForFolder(notes, folderId)
     return (
       <section className='NoteListMain'>
+        <ul>
+          {notesForFolder.map(note =>
+            <li key={note.id}>
+              <Note
+                id={note.id}
+                name={note.note_name}
+                modified={note.modified}
+                onDeleteNote={this.onDeleteNote}
+              />
+            </li>
+          )}
+        </ul>
         <div className='NoteListMain__button-container'>
           <CircleButton
             tag={Link}
@@ -34,18 +46,6 @@ export default class NoteListMain extends React.Component {
             Note
           </CircleButton>
         </div>
-        <ul>
-          {notesForFolder.map(note =>
-            <li key={note.id}>
-              <Note
-                id={note.id}
-                name={note.name}
-                modified={note.modified}
-                onDeleteNote={this.onDeleteNote}
-              />
-            </li>
-          )}
-        </ul>
       </section>
     )
   }

@@ -15,7 +15,7 @@ export default class AddNote extends React.Component {
   addNewNote = note => {
     note.modified = new Date(note.modified);
 
-    fetch(`${config.API_ENDPOINT}/notes`, {
+    fetch(`${config.API_ENDPOINT}/api/notes`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ export default class AddNote extends React.Component {
   parseFolders = () => {
     return this.context.folders.map(folder => (
       <option key={folder.id} name={folder.id} value={folder.id}>
-        {folder.name}
+        {folder.folder_name}
       </option>
     ))
   }
@@ -38,9 +38,9 @@ export default class AddNote extends React.Component {
   handleSubmit = e => {
     e.preventDefault(e);
     const newNote = {
-      name: e.target.name.value,
+      note_name: e.target.name.value,
       content: e.target.content.value,
-      folderId: e.target.folder.value,
+      folder_id: e.target.folder.value,
       modified: new Date(),
     }
     if (e.target.name.value.length !== 0 && e.target.content.value.length !== 0) {

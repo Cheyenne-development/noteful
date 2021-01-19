@@ -39,8 +39,8 @@ class App extends Component {
 
   componentDidMount() {
     Promise.all([
-      fetch(`${config.API_ENDPOINT}/notes`),
-      fetch(`${config.API_ENDPOINT}/folders`),
+      fetch(`${config.API_ENDPOINT}/api/notes`),
+      fetch(`${config.API_ENDPOINT}/api/folders`),
     ])
       .then(([notesRes, foldersRes]) => {
         if (!notesRes.ok)
@@ -156,7 +156,7 @@ class App extends Component {
   renderNavRoutes() {
     return (
       <>
-        <Route path="/note/:noteId" component={NotePageNav} />
+        <Route path="/api/notes/:noteId" component={NotePageNav} />
         <Route path="/add-folder" component={NotePageNav} />
         <Route path="/add-note" component={NotePageNav} />
         {['/', '/folder/:folderId'].map(path => (
@@ -169,7 +169,7 @@ class App extends Component {
   renderMainRoutes() {
     return (
       <>
-        <Route path="/note/:noteId" component={NotePageMain} />
+        <Route path="/api/notes/:noteId" component={NotePageMain} />
         <Route path="/add-folder" component={AddFolder} />
         <Route path="/add-note" component={AddNote} />
         {['/', '/folder/:folderId'].map(path =>
